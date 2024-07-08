@@ -11,6 +11,7 @@ const Chat = () => {
             const response = await axios.post('https://backendapi-dq5x.onrender.com/get_contexts/', {
                 query: query,
             });
+            console.log(response.data.contexts);
             return response.data.contexts;
         } catch (error) {
             console.error('Error fetching contexts:', error);
