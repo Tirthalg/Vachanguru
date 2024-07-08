@@ -3,21 +3,17 @@ import axios from 'axios';
 
 const Chat = () => {
     const [query, setQuery] = useState('');
-    const [contexts, setContexts] = useState([]);
     const [answer, setAnswer] = useState('');
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
 
     const fetchContexts = async () => {
         try {
             const response = await axios.post('https://backendapi-dq5x.onrender.com/get_contexts/', {
                 query: query,
             });
-            setContexts(response.data.contexts);
             return response.data.contexts;
         } catch (error) {
             console.error('Error fetching contexts:', error);
-            setError('Error fetching contexts');
         }
     };
 
